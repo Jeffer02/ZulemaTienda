@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - GameStore</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-body">
+    <header class="topbar">
+        <div class="topbar-inner">
+            <div class="logo">
+                <span class="logo-icon">🎮</span>
+                <span class="logo-text">GameStore Admin</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Tienda</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="admin-main">
+        <section class="section">
+            <div class="admin-header">
+                <h2>Administrar juegos</h2>
+                <button id="openAddModalBtn" class="btn primary">Agregar juego</button>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Consola</th>
+                            <th>Precio</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminTableBody">
+                        <tr>
+                            <td colspan="5">
+                                <div class="loader-center">
+                                    <div class="loader"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" id="addModal">
+        <div class="modal-overlay" data-close="addModal"></div>
+        <div class="modal-content">
+            <h3>Agregar juego</h3>
+            <form id="addGameForm" class="form">
+                <div class="form-row">
+                    <label>Nombre</label>
+                    <input type="text" id="gameName" required>
+                </div>
+                <div class="form-row">
+                    <label>Consola</label>
+                    <select id="gameConsole" required>
+                        <option value="">Seleccionar...</option>
+                        <option value="PS4">PS4</option>
+                        <option value="PS5">PS5</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label>Precio (S/)</label>
+                    <input type="number" id="gamePrice" step="0.01" min="0" required>
+                </div>
+                <div class="form-row">
+                    <label>Género</label>
+                    <input type="text" id="gameGenre" required>
+                </div>
+                <div class="form-row">
+                    <label>URL imagen</label>
+                    <input type="url" id="gameImage" required>
+                </div>
+                <div class="form-row">
+                    <label>Descripción</label>
+                    <textarea id="gameDescription" rows="3" required></textarea>
+                </div>
+                <p id="addErrorMsg" class="form-error hidden"></p>
+                <div class="modal-actions">
+                    <button type="button" class="btn ghost" data-close="addModal">Cancelar</button>
+                    <button type="button" class="btn primary" id="saveGameBtn">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="editModal">
+        <div class="modal-overlay" data-close="editModal"></div>
+        <div class="modal-content">
+            <h3>Editar juego</h3>
+            <form id="editGameForm" class="form">
+                <input type="hidden" id="editGameId">
+                <div class="form-row">
+                    <label>Nombre</label>
+                    <input type="text" id="editGameName" required>
+                </div>
+                <div class="form-row">
+                    <label>Consola</label>
+                    <select id="editGameConsole" required>
+                        <option value="PS4">PS4</option>
+                        <option value="PS5">PS5</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label>Precio (S/)</label>
+                    <input type="number" id="editGamePrice" step="0.01" min="0" required>
+                </div>
+                <div class="form-row">
+                    <label>Género</label>
+                    <input type="text" id="editGameGenre" required>
+                </div>
+                <div class="form-row">
+                    <label>URL imagen</label>
+                    <input type="url" id="editGameImage" required>
+                </div>
+                <div class="form-row">
+                    <label>Descripción</label>
+                    <textarea id="editGameDescription" rows="3" required></textarea>
+                </div>
+                <p id="editErrorMsg" class="form-error hidden"></p>
+                <div class="modal-actions">
+                    <button type="button" class="btn ghost" data-close="editModal">Cancelar</button>
+                    <button type="button" class="btn primary" id="updateGameBtn">Actualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="js/admin.js"></script>
+</body>
+</html>
